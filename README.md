@@ -49,7 +49,6 @@ They can all be used the same way: `[libKitten backgroundColor:[UIImage ...]];`
 #import <Kitten/libKitten.h>
 
 void (* orig_someMethod)(SomeClass* self, SEL _cmd);
-
 void override_someMethod(SomeClass* self, SEL _cmd) {
     orig_someMethod(self, _cmd);
 
@@ -60,7 +59,7 @@ void override_someMethod(SomeClass* self, SEL _cmd) {
 }
 
 __attribute__((constructor)) static void initialize() {
-	MSHookMessageEx(NSClassFromString(@"SomeClass"), @selector(someMethod), (IMP)&override_someMethod, (IMP *)&orig_someMethod);
+    MSHookMessageEx(NSClassFromString(@"SomeClass"), @selector(someMethod), (IMP)&override_someMethod, (IMP *)&orig_someMethod);
 }
 ```
 
