@@ -3,7 +3,7 @@ Name: libKitten
 Depends: firmware (>= 12.0)
 Conflicts: love.litten.libkitten
 Provides: love.litten.libkitten (=1.3.3)
-Version: 1.3.3
+Version: 1.3.4
 Architecture: iphoneos-arm
 Description: Collection of image and color calculations
 Maintainer: Traurige
