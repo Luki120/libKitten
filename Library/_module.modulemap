@@ -1,0 +1,7 @@
+module libKitten {
+	header "libKitten.h"
+
+	link "libkitten"
+
+	export *
+}
