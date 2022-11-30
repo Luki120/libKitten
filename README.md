@@ -63,6 +63,32 @@ __attribute__((constructor)) static void initialize() {
 }
 ```
 
+## Swift example with Orion
+
+```swift
+import libKitten
+
+class SomeHook: ClassHook<Superclass> {
+    static let targetName = "TargetClass"
+
+    func someMethod() {
+        orig.someMethod()
+
+        let label = UILabel()
+        label.text = "Some text"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        target.addSubview(label)
+
+        NSLayoutConstraint.activate([
+            // constraints
+        ])
+
+        guard let image = UIImage(contentsOfFile: "pathToImage") else { return }
+        label.textColor = libKitten.primaryColor(image)
+    }
+}
+```
+
 ## License
 [MIT](https://github.com/Traurige/libKitten/blob/main/LICENSE)
 

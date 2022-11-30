@@ -16,4 +16,5 @@ stage::
 	$(ECHO_NOTHING)rsync -a ./Library/libKitten.h $(THEOS_STAGING_DIR)/usr/include/Kitten $(FW_RSYNC_EXCLUDES)$(ECHO_END)
 	mkdir -p $(THEOS)/include/Kitten
 	cp -r ./Library/libKitten.h $(THEOS)/include/Kitten
+	cp ./Library/_module.modulemap $(THEOS)/include/Kitten/module.modulemap
 	cp $(THEOS_STAGING_DIR)/usr/lib/libkitten.dylib $(THEOS)/lib/libkitten.dylib
