@@ -43,7 +43,7 @@ Available methods are:
 
 They can all be used the same way: `[libKitten backgroundColor:[UIImage ...]];`
 
-## Example
+## Objective-C Example
 
 ```objc
 #import <Kitten/libKitten.h>
@@ -54,7 +54,7 @@ void override_someMethod(SomeClass* self, SEL _cmd) {
 
     UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(200, 200, 200, 200)];
     [label setText:@"Some text"];
-    [label setTextColor:[libKitten secondaryColor:[UIImage imageWithContentsOfFile:@"pathToImage"]]];
+    [label setTextColor:[libKitten secondaryColor:[UIImage imageWithContentsOfFile:IMAGE_PATH]]];
     [self addSubview:label];
 }
 
@@ -63,7 +63,7 @@ __attribute__((constructor)) static void initialize() {
 }
 ```
 
-## Swift example with Orion
+## Swift Example
 
 ```swift
 import libKitten
@@ -74,23 +74,16 @@ class SomeHook: ClassHook<Superclass> {
     func someMethod() {
         orig.someMethod()
 
-        let label = UILabel()
+        let label: UILabel = UILabel(frame: CGRectMake(200, 200, 200, 200));
         label.text = "Some text"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        target.addSubview(label)
 
-        NSLayoutConstraint.activate([
-            // constraints
-        ])
-
-        guard let image = UIImage(contentsOfFile: "pathToImage") else { return }
+        guard let image = UIImage(contentsOfFile: IMAGE_PATH) else { return }
         label.textColor = libKitten.primaryColor(image)
+
+        target.addSubview(label)
     }
 }
 ```
 
 ## License
 [MIT](https://github.com/Traurige/libKitten/blob/main/LICENSE)
-
-## Credits
-- Links to the original sources are included within the source code
