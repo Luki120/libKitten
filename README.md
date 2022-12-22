@@ -6,24 +6,16 @@ Collection of image and color calculations
 2. Install libKitten
 
 ## Compatibility
-iPhone, iPad, iPod and AppleTV running iOS/iPadOS/tvOS 12 or later
+iPhone, iPad and iPod running iOS/iPadOS 12 or later
 
 # Developers
 
 ## Installing Into Theos:
-**Method 1:**<br>
-Depending on your target system put the `.dylib` from either the `iOS` or `tvOS` folder into your `theos/lib` folder and the `Kitten` folder into `theos/include`
-***
-**Method 2:**<br>
 Compile the project and everything will happen automatically
 
 ## Compiling
   - [Theos](https://theos.dev/) is required to compile the project
   - You may want to edit the root `Makefile` to use your Theos SDK and toolchain
-  - Additionally to compile for tvOS:
-    - Make sure you're using a tvOS SDK
-    - Change the target from `iphone:clang` to `appletv:clang` in the root `Makefile`
-    - Change the architecture `iphoneos-arm` to `appletvos-arm64` in the control file
 
 ## Importing Into Your Project:
 1. Import the library in your header or main file `#import <Kitten/libKitten.h>`
