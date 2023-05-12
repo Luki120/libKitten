@@ -1,6 +1,12 @@
 export ARCHS = arm64 arm64e
-export TARGET = iphone:clang:14.4:12.0
 export SYSROOT = $(THEOS)/sdks/iPhoneOS14.4.sdk
+
+ifneq ($(THEOS_PACKAGE_SCHEME), rootless)
+export TARGET = iphone:clang:14.4:12.0
+export PREFIX = $(THEOS)/toolchain/Xcode.xctoolchain/usr/bin/
+else
+export TARGET = iphone:clang:14.4:15.0
+endif
 
 include $(THEOS)/makefiles/common.mk
 
@@ -11,8 +17,6 @@ libkitten_FRAMEWORKS = UIKit
 
 ifeq ($(THEOS_PACKAGE_SCHEME), rootless)
 libkitten_LDFLAGS += -install_name @rpath/libkitten.dylib
-else
-export PREFIX = $(THEOS)/toolchain/Xcode.xctoolchain/usr/bin/
 endif
 
 include $(THEOS_MAKE_PATH)/library.mk
