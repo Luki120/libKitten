@@ -1,11 +1,9 @@
 export ARCHS = arm64 arm64e
-export SYSROOT = $(THEOS)/sdks/iPhoneOS14.4.sdk
 
 ifneq ($(THEOS_PACKAGE_SCHEME), rootless)
-export TARGET = iphone:clang:14.4:12.0
-export PREFIX = $(THEOS)/toolchain/Xcode.xctoolchain/usr/bin/
+export TARGET = iphone:clang:14.5:12.0
 else
-export TARGET = iphone:clang:14.4:15.0
+export TARGET = iphone:clang:14.5:15.0
 endif
 
 include $(THEOS)/makefiles/common.mk
