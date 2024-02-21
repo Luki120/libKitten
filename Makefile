@@ -12,6 +12,8 @@ include $(THEOS_MAKE_PATH)/library.mk
 
 after-package::
 	@mkdir -p $(THEOS)/include/Kitten/
+	@mkdir -p $(THEOS)/lib/iphone/rootless/
+	@mkdir -p $(THEOS)/include/Kitten/
 	@rsync ./Library/libKitten.h $(THEOS)/include/Kitten
 	@cp ./Library/_module.modulemap $(THEOS)/include/Kitten/module.modulemap
 
