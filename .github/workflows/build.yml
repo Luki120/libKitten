@@ -28,12 +28,14 @@ jobs:
           sparse-checkout: iPhoneOS16.5.sdk
           path: theos/sdks
 
-      - name: Build package
+      - name: Build package & extract rootless dylib
         run: |
           brew install make ldid
           THEOS=theos gmake clean package TARGET="iphone:clang:16.5:14.0" FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+          THEOS=theos gmake clean stage TARGET="iphone:clang:16.5:14.0" THEOS_PACKAGE_SCHEME=rootless
+          cp "${{ github.workspace }}/.theos/obj/debug/libkitten.dylib" "./packages/libkitten_rootless.dylib"
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
         with:
-          path: packages/*.deb
+          path: packages/*
