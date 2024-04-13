@@ -15,7 +15,6 @@ set -e
 set -v
 
 # Copy the dynamic libraries
-mkdir -p "${THEOS}/lib/iphone/rootless"
 cp Library/libkitten.dylib "${THEOS}/lib/"
 cp Library/libkitten_rootless.dylib "${THEOS}/lib/iphone/rootless/libkitten.dylib"
 
